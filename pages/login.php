@@ -1,41 +1,4 @@
-<?php    
 
-session_start();
-require '../includes/connection.php';
-
-if(isset($_POST['login'])){
-       
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-     
-  $sql = mysqli_query($con, "select * from users where email = '$email' AND password = '$password' limit 1");
-      
-
-   if(mysqli_num_rows($sql) > 0){ 
-      while($row = mysqli_fetch_assoc($sql)){ 
-        $email = $row["email"]; 
-        
-        if($row["role"] == "admin"){ 
-          $_SESSION['admin_email'] = $row["email"]; 
-          $_SESSION['admin_pass'] = $row["password"]; 
-          $_SESSION['role'] = $row["role"]; 
-          
-          header("location: ../admin/"); 
-        } elseif ($row['password'] != $password){ 
-          echo "<script>alert('Wrong password')</script>";
-        } else{
-            $_SESSION['name'] = $row["name"];
-            $_SESSION['role'] = $row["role"];
-            $_SESSION['userid']  = $row['userid'];
-
-            header("location: ./user_page.php"); 
-         }  
-
-      }
-   }
-}
-      
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -66,7 +29,7 @@ if(isset($_POST['login'])){
             </ul>
 
             <div class="container p-5">
-               <form action="login.php" method="POST">
+               <form action="../actions/login.php" method="POST">
                   <div class="mb-3">
                      <label for="exampleInputEmail1" class="form-label"
                         >Email address</label

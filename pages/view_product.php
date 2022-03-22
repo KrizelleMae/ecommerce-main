@@ -5,6 +5,7 @@ include '../includes/connection.php';
 session_start();
 
 $id = $_GET['id'];
+$userid = $_SESSION["id"];
 $query = mysqli_query($con, "SELECT * from items where id = '$id';");
 $row = mysqli_fetch_array($query);
 
@@ -25,6 +26,7 @@ $row = mysqli_fetch_array($query);
       ?>
    </head>
    <body class="bg-white">
+     
       <div class="container my-5">
          <!-- Breadcrumb -->
          <div class="mt-5 pt-2">
@@ -32,9 +34,9 @@ $row = mysqli_fetch_array($query);
                <ol class="breadcrumb fs-6">
                   <li class="breadcrumb-item">
                      <a
-                        href="./index.php"
+                        href="./all_products.php"
                         class="text-primary text-decoration-none"
-                        >Home</a
+                        >All products</a
                      >
                   </li>
                   <li
@@ -140,23 +142,30 @@ $row = mysqli_fetch_array($query);
                      name="price"
                      value="<?php echo $row['price'];?>"
                   />
+
+               
+
                   <button
+                      <?php if($userid == 'undefined') {echo 'disabled';} ?>
                      type="submit"
                      class="btn btn-outline-secondary rounded-pill col-md py-3 mx-3 mt-3"
                      name="add-to-cart"
                   >
                      ADD TO CART
                   </button>
+
+              
                </form>
 
                <a
-                  href="../pages/checkout.php?id=<?php echo $row['id']; ?>"
+          
+                  href="<?php if($userid == 'undefined') {echo "./login.php";} else { echo "../pages/checkout.php?id=$row[id] ";}?>"
                   class="row text-white text-decoration-none"
                >
                   <button
                      type="submit"
                      class="btn btn-dark rounded-pill col-md py-3 mx-3 mt-3"
-                     name="add-to-cart"
+                
                   >
                      BUY NOW <span class="ms-1 bx bx-buy"></span></button
                ></a>

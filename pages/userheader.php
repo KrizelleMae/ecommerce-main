@@ -21,7 +21,7 @@
                <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav m-auto">
                      <li class="nav-item">
-                        <a class="nav-link me-4 active" aria-current="page" href="../"
+                        <a class="nav-link me-4 active" aria-current="page" href="./user_page.php"
                            >HOME</a
                         >
                      </li>
@@ -34,15 +34,10 @@
                      </li>
 
                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        CATEGORIES
+                        <a class="nav-link " href="./all_products.php" >
+                        ALL PRODUCTS
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                        
                      </li>
 
                     
@@ -72,7 +67,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item" href="#">Profile</a></li>
-                          <li><a class="dropdown-item" href="../pages/">Logout</a></li>
+                          <li><a class="dropdown-item" href="../actions/logout.php">Logout</a></li>
                           
                         </ul>
                      </li>

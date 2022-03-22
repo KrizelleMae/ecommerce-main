@@ -27,7 +27,7 @@ include "../includes/connection.php";
             <nav class="breadcrumb text-dark fs-6">
                <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                     <a href="./index.php" class="text-primary text-decoration-none"
+                     <a href="./user_page.php" class="text-primary text-decoration-none"
                         >Home</a
                      >
                   </li>
@@ -41,7 +41,7 @@ include "../includes/connection.php";
             </nav>
          </div>
 
-         <div class="row container">
+         <div class="row">
             <?php
                $query=mysqli_query($con,"select * from `items` limit 8;");
                while($row=mysqli_fetch_array($query)){
@@ -50,8 +50,8 @@ include "../includes/connection.php";
             <form
                action="../actions/add_to_cart.php?id=<?php echo $row['id']; ?>"
                method="POST"
+               class="row"
             >
-            
                <div class="col-md-3 shadow p-4 m-3">
                   <a
                      href="./view_product.php?id=<?php echo $row['id'] ?>"
@@ -95,7 +95,6 @@ include "../includes/connection.php";
 
                      <div class="row mx-3">
                         <button
-                        disabled
                            type="submit"
                            class="btn btn-outline-secondary rounded-pill col-md py-2 mx-2 my-4"
                            name="add-to-cart"

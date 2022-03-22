@@ -20,7 +20,7 @@
                <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav m-auto">
                      <li class="nav-item">
-                        <a class="nav-link me-4 active" aria-current="page" href="../"
+                        <a class="nav-link me-4 active" aria-current="page" href="./"
                            >HOME</a
                         >
                      </li>
@@ -33,15 +33,10 @@
                      </li>
 
                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        CATEGORIES
+                        <a class="nav-link " href="./all_products.php" >
+                        ALL PRODUCTS
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                        
                      </li>
                     
                   </ul>
@@ -49,7 +44,7 @@
                     <ul class="navbar-nav m-auto">
                        
                         <li class="nav-item me-4">
-                              <a href="./cart.php"> 
+                              <a href="./login.php">
                              <div class="position-relative pe-1">
                             
                               <i class='fs-3 bx bx-shopping-bag text-color'> </i>

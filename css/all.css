@@ -16,3 +16,16 @@
    justify-content: center;
    margin: 200px;
 }
+
+.carousel-inner {
+   background-color: #eee;
+   padding: 10px;
+   max-height: 500px;
+   margin-bottom: 50px;
+   width: 100%;
+}
+
+.carousel-inner img {
+   height: 450px;
+   object-fit: contain;
+}

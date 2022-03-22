@@ -43,7 +43,7 @@ session_start();
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN<span class="caret"></span></a>
                          <ul class="dropdown-menu">
                               <li class="dropdown-header">Account settings</li>
-                              <li><a onclick='confirm("Are you sure you want to log out?");' href="../pages/index.php">Logout</a></li> 
+                              <li><a onclick='confirm("Are you sure you want to log out?");' href="../actions/logout.php">Logout</a></li> 
                          </ul>
                          </li>
                     </ul>

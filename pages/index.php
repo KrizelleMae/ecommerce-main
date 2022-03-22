@@ -3,6 +3,7 @@
 // $error = "";
 session_start();
 $page = "home";
+$_SESSION['id'] = "undefined";
 
 ?>
 
