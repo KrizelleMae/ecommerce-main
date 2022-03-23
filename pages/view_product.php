@@ -157,18 +157,7 @@ $row = mysqli_fetch_array($query);
               
                </form>
 
-               <a
-          
-                  href="<?php if($userid == 'undefined') {echo "./login.php";} else { echo "../pages/checkout.php?id=$row[id] ";}?>"
-                  class="row text-white text-decoration-none"
-               >
-                  <button
-                     type="submit"
-                     class="btn btn-dark rounded-pill col-md py-3 mx-3 mt-3"
-                
-                  >
-                     BUY NOW <span class="ms-1 bx bx-buy"></span></button
-               ></a>
+           
             </div>
          </div>
 

@@ -20,12 +20,11 @@ $userid = $_SESSION['id'];
          content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
       />
       <meta name="generator" content="Jekyll v3.8.5" />
-      <title>checkout</title>
+      <title>Checkout Page</title>
 
       <?php include '../includes/links.php'; ?>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        
 
       <style>
          .bd-placeholder-img {
@@ -55,15 +54,18 @@ $userid = $_SESSION['id'];
       </style>
    </head>
    <body class="">
-      <form action="../actions/checkout.php" method="post">
+      <form action="../actions/checkout.php" method="post" name="checkout">
          <div class="container bg-light p-5 my-5">
             <div class="pb-5">
-               <h2>Checkout Form</h2>
-               <hr />
+               <h2 class="float-start">Checkout Form</h2>
+               <div class="float-end">    
+                  <a href="./cart.php" class="bg-danger text-decoration-none px-5 py-2 text-white rounded">Cancel order</a></div>
+             
             </div>
+              <hr />
 
-            <div class="row">
-               <div class="col-md-4 order-md-2 mb-4">
+            <div class="row mt-5">
+               <div class="col-md-4 order-md-2 ">
                   <h4
                      class="d-flex justify-content-between align-items-center mb-3"
                   >
@@ -80,32 +82,11 @@ $userid = $_SESSION['id'];
                   $query= "select * from `cart` where userid = $userid;";
                   $result = mysqli_query($con,$query);
 
-                  $fee = 0;
-                           while ($row = mysqli_fetch_array($result)) {
-                  ?>
-
-
-                
-                     <script>
-                           $(document).ready(function(){
-                           $('#method').change(function(){
-                              var getValue = $(this).val();
-                               var res = getValue;
-                             
-                           });
-                     });
-                     </script>
-                    <?php
-                        echo "<script>alert(res);</script>";
-                  ?>
-
-                     
-
-              
-
-                   
-                           
+                  
                
+                       while ($row = mysqli_fetch_array($result)) {
+                  ?>
+
                      <li
                         class="list-group-item d-flex justify-content-between lh-condensed"
                      >
@@ -116,6 +97,48 @@ $userid = $_SESSION['id'];
                            alt=""
                         />
                      </div> -->
+
+                        <?php 
+                    
+                   
+                    
+                  $sum = mysqli_query($con, "SELECT SUM(price) FROM cart WHERE userid = $userid;");
+                  $total = mysqli_fetch_array($sum);
+
+                 
+                         
+                  ?>
+                 
+                         
+                  
+                        <script>
+
+                           var method = document.getElementById('method');
+
+
+                           function get_method() {
+                              var df = 0;
+                              var subtotal = <?php echo $total[0];?>;
+                              document.getElementById('total').innerText = subtotal + ".00";
+
+                              if (document.checkout.method.value === 'deliver') {
+                                 var df = 200;
+                                 var val = document.getElementById('fee').innerText = df + ".00";
+
+                                 document.getElementById('total').innerText = df + subtotal + ".00";
+
+
+                              } else {
+                                 document.getElementById('fee').innerText = df + ".00";
+                                 var total = document.getElementById('total').innerText = df + ".00";
+
+                                 document.getElementById('total').innerText = df + subtotal + ".00";
+                              }
+                           }
+
+                           get_method();
+                        </script>
+
                         <div>
                            <h6 class="my-0 text-left">
                               <?php echo $row['item_name']; ?>
@@ -143,26 +166,18 @@ $userid = $_SESSION['id'];
                               only</small
                            >
                         </div>
-             
-                        <span class="text-success">+ &#8369; <?php echo $fee; ?></span>
+
+                        <span class="text-success"
+                           >+ &#8369; <span id="fee">0.00</span></span
+                        >
                      </li>
 
-                     <?php 
-                    
-                  $sum = mysqli_query($con, "SELECT SUM(price) FROM cart WHERE userid = $userid;");
-                  $total = mysqli_fetch_array($sum);
-
-                 
-                         
-                  ?>
                      <li class="list-group-item d-flex justify-content-between">
                         <span>Total (PHP)</span>
                         <strong
                            >&#8369;
-                           <?php echo $total[0] + $fee; ?>.00</strong
-                        >
-
-                        <?php ?>
+                           <span id="total"><?php echo $total[0];?>.00</span>
+                        </strong>
                      </li>
 
                      <div class="mt-5 payment">
@@ -231,9 +246,7 @@ $userid = $_SESSION['id'];
                         value="<?php echo $_SESSION['email']; ?>"
                         placeholder="random@gmail.com"
                      />
-                     <div class="invalid-feedback">
-                        Please enter a valid email address for shipping updates.
-                     </div>
+                    
                   </div>
 
                   <div class="mb-3">
@@ -244,41 +257,34 @@ $userid = $_SESSION['id'];
                         id="address"
                         placeholder="1234 Main St"
                         required
-                        name="address1"
+                        name="address"
                      />
-                     <div class="invalid-feedback">
-                        Please enter your shipping address.
-                     </div>
+                    
                   </div>
 
-                  <div class="mb-3">
-                     <label for="address2"
-                        >Address 2
-                        <span class="text-muted">(Optional)</span></label
+                 
+
+                  <div class="mt-5">
+                     <h5>Delivery Method</h5>
+                     <select
+                        name="method"
+                        id="method"
+                        class="w-50 form-select"
+                        onchange="get_method()"
+                        required
                      >
-                     <input
-                        type="text"
-                        class="form-control"
-                        id="address2"
-                        placeholder="Apartment or suite"
-                        name="address2"
-                     />
+                        <option value="">Select method</option>
+                        <option value="deliver">Deliver</option>
+                        <option value="pickup">Pickup</option>
+                     </select>
                   </div>
 
-                  <h4 class="mb-3 mt-5">Delivery / Pickup</h4>
-
-                  <select name="method" id="method" class="w-50 form-select" required>
-                     <option value="">Select method</option>
-                     <option value="deliver">Deliver</option>
-                     <option value="pickup">Pickup</option>
-                  </select>
+              
 
                   <!-- Include the PayPal JavaScript SDK -->
                   <script src="https://www.paypal.com/sdk/js?client-id=test&currency=PHP"></script>
 
                   <script>
-
-                     
                      // Listen for changes to the radio fields
                      document
                         .querySelectorAll('input[name=payment-option]')
@@ -324,7 +330,5 @@ $userid = $_SESSION['id'];
             </div>
          </div>
       </form>
-
-     
    </body>
 </html>

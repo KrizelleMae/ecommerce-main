@@ -30,52 +30,39 @@
               
                <table class="table mt-3 table-bordered">
                   <thead class="bg-light text-warning">
-                     <th>Item ID</th>
-                     <th width="22%">Image samples</th>
-                     <th>Item name</th>
-                     <th>Price</th>
-                     <th>Dimension</th>
-                     <th>Category</th>
+                     <th>Order ID</th>
+                     <th>Buyer name</th>
+                     <th>Email</th>
+                     <th>Total</th>
+                     <th>Address</th>
+                     <th>Date ordered</th>
+                     <th>Status</th>
                      <th class="text-center">Action</th>
                   </thead>
                   <tbody>
                      <!-- <?php
-                        $query=mysqli_query($con,"select * from `orders`");
+                        $query=mysqli_query($con,"select * from `order_details`");
                         while($row=mysqli_fetch_array($query)){
                      ?> -->
                      <tr class="">
-                        <th class="pt-4"><?php echo $row['id']?></th>
-                        <td class="">
-                           <img
-                              src="../<?php echo $row['img']?>"
-                              height="60px"
-                           />
-                           <img
-                              src="../<?php echo $row['img2']?>"
-                              height="60px"
-                           />
-                        </td>
-                        <td class="pt-4"><?php echo $row['item_name']?></td>
-                        <td class="pt-4"><?php echo $row['price']?></td>
-                        <td class="pt-4"><?php echo $row['dimension']?></td>
-                        <td class="pt-4"><?php echo $row['category']?></td>
+                        <th class="pt-4"><?php echo $row['order_id']?></th>
+                       
+                        <td class="pt-4"><?php echo $row['name']?></td>
+                        <td class="pt-4"><?php echo $row['email']?></td>
+                        <td class="pt-4">&#8369; <?php echo $row['total']?>.00</td>
+                        <td class="pt-4"><?php echo $row['address']?></td>
+                        <td class="pt-4"><?php echo $row['date_ordered']?></td>
+                        <td class="pt-4"><?php echo $row['status']?></td>
                         <td class="text-center">
                            <a
                               class="btn btn-success py-2"
                               data-toggle="modal"
                               data-target="#update-product"
                               title="Edit product"
-                              ><i class="bx bxs-edit-alt"></i>Update</a
+                              ><i class="bx bxs-edit-alt"></i>Accept order</a
                            >
 
-                           <a
-                              href="backend/delete.php?id=<?php echo $row['id'];?>"
-                              class="btn btn-danger py-2"
-                              class="tooltip"
-                              title="Delete product"
-                              onclick="return confirm('Are you sure you want to delete this item? ');"
-                              >Delete</a
-                           >
+                         
                         </td>
                      </tr>
                      <?php

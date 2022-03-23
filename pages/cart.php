@@ -57,7 +57,7 @@ $userid = $_SESSION['id'];
                      <table
                         class="table table-borderless w-100 table-responsive"
                      >
-                        <tr class="bg-dark text-white" height="60px">
+                        <tr class="bg-light text-dark" height="60px">
                            <th width="25%" class="p-3">Item</th>
                            <th width="40%" class="p-3">Item name</th>
                            <th class="text-center p-3">Price</th>
@@ -137,7 +137,7 @@ $userid = $_SESSION['id'];
                      </table>
 
                      <a
-                      href="./checkout.php"
+                      href="./checkout.php?id=<?php echo $userid; ?>"
 
                         class="btn btn-dark rounded-pill py-2 px-5 float-end mt-5"
                      >

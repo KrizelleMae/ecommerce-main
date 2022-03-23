@@ -1,7 +1,9 @@
 <?php 
 // $error = "";
 session_start();
-include "../includes/connection.php";  
+include "../includes/connection.php"; 
+
+$stat = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@ include "../includes/connection.php";
       ?>
    </head>
    <body class="bg-light">
-      <?php include './navbar.php';?>
+      
       <div class="mt-5"></div>
       <div class="container my-5">
          <!-- Breadcrumb -->
@@ -27,7 +29,7 @@ include "../includes/connection.php";
             <nav class="breadcrumb text-dark fs-6">
                <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                     <a href="./index.php" class="text-primary text-decoration-none"
+                     <a href="<?php if($stat == 'undefined') {echo './index.php';} else {echo './user_page.php';}?>" class="text-primary text-decoration-none"
                         >Home</a
                      >
                   </li>
